@@ -1,0 +1,29 @@
+#!/bin/bash
+
+# عرض محتويات مجلد workspace
+ls -la /data/chats/11c2b2cfe560470bbac538585b1d81a2/workspace/
+
+# الدخول إلى مجلد react_template وعرض محتوياته
+cd /data/chats/11c2b2cfe560470bbac538585b1d81a2/workspace/react_template && ls -la
+
+# البحث عن مجلد routes داخل src
+find ./src -name "routes*" -type d || echo "No routes directory found"
+
+# التحقق من وجود مجلد store
+ls -la ./src/store || echo "No store directory found"
+
+# البحث عن ملفات index.js التي تحتوي على كلمة routes
+find ./src -name "index*.js*" | grep routes
+
+# البحث عن جميع ملفات js و jsx التي تحتوي على كلمة routes
+find ./src -name "*.js" | grep routes
+find ./src -name "*.jsx" | grep routes
+
+# عرض جميع ملفات الصفحات داخل src/pages بترتيب أبجدي
+find ./src/pages -type f | sort
+
+# تثبيت مكتبة الترجمة i18next ومشتقاتها
+npm install react-i18next i18next i18next-browser-languagedetector --save
+
+# إنشاء مجلدات locales للغات en و ar
+mkdir -p src/locales/en src/locales/ar
